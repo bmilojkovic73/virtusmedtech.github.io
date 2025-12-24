@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtus MedTech Advisors | Strategic Medical Technology Consulting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --silver: #404040;
+            --dark: #ffffff;
+            --charcoal: #f5f5f5;
+            --light-silver: #1a1a1a;
+            --accent-gold: #B8860B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--dark);
+            color: var(--light-silver);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background effect */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.05;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--gold) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent-gold) 0%, transparent 50%);
+            animation: gradientShift 20s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+
+        /* Header and Logo */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 2rem 5%;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo-container {
+            max-width: 400px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            line-height: 1.1;
+        }
+
+        .logo-virtus {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.2rem;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            letter-spacing: 0;
+        }
+
+        .logo-virtus span {
+            display: inline-block;
+        }
+
+        .logo-virtus span.v-emphasis {
+            font-size: 1.3em;
+        }
+
+        .logo-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 700;
+            color: var(--silver);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .logo-subtitle span {
+            display: inline-block;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 5;
+            padding: 6rem 5% 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeIn 1.2s ease 0.3s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            color: var(--light-silver);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--silver);
+            max-width: 800px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Styles */
+        section {
+            position: relative;
+            z-index: 5;
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(250, 250, 250, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--silver);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Expertise Section */
+        .expertise-content {
+            background: linear-gradient(135deg, rgba(250, 250, 250, 0.8), rgba(255, 255, 255, 0.8));
+            border-left: 4px solid var(--gold);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .expertise-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            padding: 1.5rem;
+            border-left: 2px solid var(--silver);
+            transition: border-color 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            border-left-color: var(--gold);
+        }
+
+        .highlight-item h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .highlight-item p {
+            color: var(--silver);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Approach Section */
+        .approach-content {
+            max-width: 900px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .approach-content p {
+            font-size: 1.2rem;
+            color: var(--silver);
+            line-height: 2;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .approach-pillars {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .pillar {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.08));
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .pillar:hover .pillar-icon {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .pillar h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .pillar p {
+            color: var(--silver);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(250, 250, 250, 0.9), rgba(255, 255, 255, 0.9));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: var(--silver);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact-email {
+            font-size: 1.3rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--silver);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 5%;
+            }
+
+            .hero {
+                padding: 3rem 5% 2rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-pillars {
+                gap: 2rem;
+            }
+
+            .expertise-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-virtus">
+                    <span class="v-emphasis">V</span>
+                    <span>I</span>
+                    <span>R</span>
+                    <span>T</span>
+                    <span>U</span>
+                    <span>S</span>
+                </span>
+                <span class="logo-subtitle">
+                    <span>M</span>
+                    <span>E</span>
+                    <span>D</span>
+                    <span>T</span>
+                    <span>E</span>
+                    <span>C</span>
+                    <span>H</span>
+                    <span> </span>
+                    <span>A</span>
+                    <span>D</span>
+                    <span>V</span>
+                    <span>I</span>
+                    <span>S</span>
+                    <span>O</span>
+                    <span>R</span>
+                    <span>S</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Strategic Excellence in <strong>Medical Technology</strong></h1>
+        <p class="hero-description">
+            Comprehensive go-to-market, market access, and clinical strategy consulting delivered by experienced industry leaders. We partner with medtech innovators and diagnostic companies to transform breakthrough technologies into market success.
+        </p>
+    </section>
+
+    <section id="services" class="fade-in-section">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🎯</span>
+                <h3>Go-to-Market Strategy</h3>
+                <p>Comprehensive market entry planning, competitive positioning, and commercial launch strategies tailored to your technology and target markets.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🌐</span>
+                <h3>Market Access</h3>
+                <p>Reimbursement strategies, health economics modeling, payer engagement, and evidence generation frameworks to ensure sustainable market access.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">⚕️</span>
+                <h3>Clinical & Medical Strategy</h3>
+                <p>Clinical development planning, medical affairs infrastructure, KOL engagement, and evidence-based positioning for diagnostic and therapeutic innovations.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">📋</span>
+                <h3>Regulatory Strategy</h3>
+                <p>Global regulatory pathway optimization, submissions support, and compliance frameworks for point-of-care diagnostics and medical devices.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🤝</span>
+                <h3>Business Development</h3>
+                <p>Partnership identification, investor pitch development, due diligence support, and strategic alliance formation for emerging medtech companies.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3>Commercial & Marketing</h3>
+                <p>Brand strategy, customer segmentation, digital marketing frameworks, and sales enablement tools for diagnostic and medical technology markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="fade-in-section">
+        <h2>Expertise</h2>
+        <div class="expertise-content">
+            <p style="color: var(--light-silver); font-size: 1.1rem; margin-bottom: 2rem;">
+                With decades of leadership experience across global pharmaceutical and diagnostic companies including AstraZeneca, Novo Nordisk, Roche Diagnostics, Nova Biomedical, and Sanvita Medical, we bring deep industry knowledge and proven execution capability to every engagement.
+            </p>
+            
+            <div class="expertise-highlights">
+                <div class="highlight-item">
+                    <h4>Therapeutic Focus</h4>
+                    <p>Cardiovascular-Renal-Metabolic diseases, Chronic Kidney Disease screening, Point-of-Care diagnostics</p>
+                </div>
+
+                <div class="highlight-item">
+                    <h4>Leadership Roles</h4>
+                    <p>Chief Medical Officer, VP Medical Affairs, Global Medical Strategy across Fortune 500 companies</p>
+                </div>
+
+                <div class="highlight-item">
+                    <h4>Global Reach</h4>
+                    <p>Government relationships across 40+ countries, national CKD screening initiatives, Sub-Saharan Africa market development</p>
+                </div>
+
+                <div class="highlight-item">
+                    <h4>Industry Networks</h4>
+                    <p>Leadership positions in ISN, ASN, ERA-EDTA, and extensive KOL relationships across nephrology and diagnostics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="fade-in-section">
+        <h2>Our Approach</h2>
+        <div class="approach-content">
+            <p>
+                We believe the best strategies emerge from genuine partnership. We listen deeply, leverage our extensive experience, and work collaboratively to develop solutions that fit your unique challenges and opportunities.
+            </p>
+
+            <div class="approach-pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">👂</div>
+                    <h4>Listen First</h4>
+                    <p>Understanding your vision, constraints, and goals</p>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">💡</div>
+                    <h4>Strategic Insight</h4>
+                    <p>Applying proven frameworks and industry expertise</p>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">🔄</div>
+                    <h4>Collaborative Execution</h4>
+                    <p>Working as an extension of your team</p>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">📈</div>
+                    <h4>Measurable Impact</h4>
+                    <p>Delivering results that drive growth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in-section">
+        <h2>Let's Talk</h2>
+        <div class="contact-content">
+            <p>
+                Whether you're preparing for launch, scaling your commercial operations, or seeking strategic guidance for your next growth phase, we're here to help.
+            </p>
+            <a href="mailto:contact@virtusmedtech.com" class="contact-email">contact@virtusmedtech.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Virtus MedTech Advisors LLC. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
